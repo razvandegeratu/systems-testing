@@ -1,0 +1,23 @@
+name: Run Unit Tests
+
+# Această secțiune dictează CÂND se rulează acțiunea
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest # Mașina virtuală pe care va rula
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3 # Descarcă codul tău pe mașina virtuală
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.x'
+
+    - name: Run tests
+      # Aici pui comanda cu care rulezi tu testele în mod normal în terminal
+      # Presupunând că folosești unittest standard:
+      run: python -m unittest discover
