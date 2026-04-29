@@ -11,13 +11,12 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3 # Descarcă codul tău pe mașina virtuală
-
+    
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
         python-version: '3.x'
 
     - name: Run tests
-      # Aici pui comanda cu care rulezi tu testele în mod normal în terminal
-      # Presupunând că folosești unittest standard:
-      run: python -m unittest discover
+      # Adăugăm '-s calea/catre/folder' ca să îi spunem unde să caute
+      run: python -m unittest discover -s laboratories/cicd-documentation
