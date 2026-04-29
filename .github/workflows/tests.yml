@@ -7,7 +7,7 @@ on:
 
 jobs:
   test:
-    runs-on: ubuntu-latest # Mașina virtuală standard de pe GitHub
+    runs-on: fedora-latest # Mașina virtuală standard de pe GitHub
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3 # Descarcă codul tău pe mașina virtuală
