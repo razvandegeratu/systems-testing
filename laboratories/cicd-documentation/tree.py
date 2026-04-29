@@ -77,6 +77,17 @@ class Tree:
             self._printInorderTree(node.right)
 
     def _printPreorderTree(self, node):
-        pass
-
+        """
+        @brief Parcurge si printeaza arborele in preordine (RSD).
+        
+        Aceasta functie viziteaza intai radacina, apoi subarborele stang, 
+        apoi subarborele drept.
+        
+        @param node Nodul curent de la care incepe parcurgerea.
+        @return Nu returneaza nimic.
+        """
+        if node is not None:
+            print(node.data)
+            self._printPreorderTree(node.left)
+            self._printPreorderTree(node.right)
 
