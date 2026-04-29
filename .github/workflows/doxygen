@@ -1,0 +1,34 @@
+name: Generate Doxygen Documentation
+
+# Se declanșează doar la push-ul unui tag (ex: v1.0, v2.1 etc.)
+on:
+  push:
+    tags:
+      - 'v*' 
+
+jobs:
+  build-docs:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Install Doxygen
+      # Instalăm doxygen pe mașina virtuală deoarece nu este preinstalat
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y doxygen
+
+    - name: Run Doxygen
+      # Această comandă caută fișierul Doxyfile și generează documentația
+      # Asigură-te că Doxyfile este în rădăcina proiectului sau specifică calea:
+      # run: doxygen laboratories/cicd-documentation/Doxyfile
+      run: doxygen Doxyfile
+
+    - name: Upload Documentation Artifact
+      # Salvăm folderul 'html' rezultat ca artefact pe GitHub
+      uses: actions/upload-artifact@v3
+      with:
+        name: Doxygen-HTML-Docs
+        path: html/ # Calea către folderul generat de Doxygen
